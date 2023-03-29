@@ -18,17 +18,29 @@ function Inscription() {
     console.log('Mot de passe:', motDePasse);
   };
 
+  const handleClick=(e)=>{
+
+    e.preventDefault()
+    var inf={email:email,password:motDePasse,username:nom}
+    console.log("hhhhhhhhhhh: "+{inf})
+
+    fetch("http://localhost:8080/comptes/ajouter",
+    {
+      method:"POST",
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body:JSON.stringify(inf)
+    }).then(()=>{
+      console.log("New Account added")
+    })
+  }
+
   return (
     <div className="popup-form">
       <form onSubmit={handleSubmit}>
         <h3>S'inscrire</h3>
         <label>
-          Nom :
+          Nom d'utilisateur :
           <input type="text" value={nom} onChange={(event) => setNom(event.target.value)} />
-        </label>
-        <label>
-          Prénom :
-          <input type="text" value={prenom} onChange={(event) => setPrenom(event.target.value)} />
         </label>
         <label>
           Email :
@@ -38,11 +50,12 @@ function Inscription() {
           Mot de passe :
           <input type="password" value={motDePasse} onChange={(event) => setMotDePasse(event.target.value)} />
         </label>
+
         <label>
           Confirmation :
           <input type="password" value={motDePasse} onChange={(event) => setMotDePasse(event.target.value)} />
         </label>
-        <button type="submit">Valider</button>
+        <button onClick={handleClick}>Valider</button>
       </form>
     </div>
   );
