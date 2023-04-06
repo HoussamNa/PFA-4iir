@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Navbar.css';
+import './static/Navbar.css';
 //import pos from './pos.jpg';
 
 
@@ -10,7 +10,7 @@ function Navbar() {
       setContent('Contenu différent pour Accueil !');
     }
   return (
-    <nav>
+    <nav className='nav'>
       <ul>
         <li>
         
