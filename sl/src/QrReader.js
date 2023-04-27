@@ -76,42 +76,66 @@ function ScanQrCode() {
 
 export default ScanQrCode;*/
 import React, { useRef, useState } from 'react';
-import QrScanner from "qr-scanner";
-import './static/QRreader.css'
+import QrScanner from 'qr-scanner';
+import './static/QRreader.css';
+import IdentityCard from './Identifiant';
 
 function ScanQrCode() {
   const [file, setFile] = useState(null);
   const [data, setData] = useState(null);
-  const fileRef=useRef();
-  const handleClick =()=>{
+  const fileRef = useRef();
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleClick = () => {
     fileRef.current.click();
   };
-  const handleChange =async(e)=>{
+
+  const handleChange = async (e) => {
     const file = e.target.files[0];
-setFile(file);
-const result=await QrScanner.scanImage(file);
-
-setData(result);
+    setFile(file);
+    const result = await QrScanner.scanImage(file);
+    setData(result);
+    setShowPopup(true)
   };
- 
-return(
-  
-<div className='container'>
-  <h2>scanner le code</h2>
- 
-  <button type="button" onClick={handleClick}>
-scanne code qr
-  </button>
-  <input type="file"  accept="image/*"  onChange={handleChange} ref={fileRef} capture="camera"
-        style={{ display: "none" }}/>
-  <div>
-    { file  && <img src={URL.createObjectURL(file)}  />  }
-    {data && <p> data: {data}</p>}
-  </div>
+  const F2 = (event) => {
+    event.preventDefault();
+    setShowPopup(false);
+  };
+  return (
+    <div className='container'>
+      <h2>Scanner le code</h2>
 
-</div>
+      <button type='button' onClick={handleClick}>
+        Scanner code QR
+      </button>
 
-);
+      <input
+        type='file'
+        accept='image/*'
+        onChange={handleChange}
+        ref={fileRef}
+        capture='camera'
+        style={{ display: 'none' }}
+        
+      />
 
+      <div>
+        
+        {file && <img src={URL.createObjectURL(file)} alt='QR Code' />}
+        {showPopup &&
+             <>
+              <div className="popup">
+               <div className="popup-inner">
+              <button className="popup-close" onClick={F2}>
+              X
+            </button>
+            {data && <IdentityCard data={JSON.parse(data)} />}
+            </div>
+            </div>
+            </>}
+      </div>
+    </div>
+  );
 }
+
 export default ScanQrCode;

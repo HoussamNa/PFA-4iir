@@ -10,6 +10,8 @@ import { BrowserRouter, Switch, Route, Link, Routes } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import MainContent from './MainPage';
 import ScanQrCode from './QrReader';
+import MapContainer from './Map';
+import Link3DModal from './Modal';
 function App() {
   const [showInscription, setShowInscription] = useState(false);
 
@@ -42,6 +44,8 @@ function App() {
         <HomeVue onSignUpClick={toggleInscription} />
         <About />
         <ScanQrCode/>
+        <Link3DModal/>
+
        
         </div>
       ) : (

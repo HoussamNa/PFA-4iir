@@ -97,10 +97,13 @@ import QRCode from 'qrcode.react';
 import "./static/TestQr.css";
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
+import MapContainer from './Map';
+import ImageUploader from './UploadeImages';
 function TestQr() {
   const [formData, setFormData] = useState({});
   const [showPopup, setShowPopup] = useState(false);
   const [showQRCode, setShowQRCode] = useState(false);
+  const [showPopup1, setShowPopup1] = useState(false);
   const qrRef = useRef(null);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -123,15 +126,39 @@ function TestQr() {
     event.preventDefault();
     setShowQRCode(false);
     setShowPopup(false);
+    
+  };
+  const F2 = (event) => {
+    event.preventDefault();
+    setShowPopup1(false);
+    setShowPopup(true);
+  };
+  const F3 = (event) => {
+    event.preventDefault();
+    setShowPopup(false);
+    setShowPopup1(true);
   };
   return (
     <div className="test-qr">
       <button onClick={() => setShowPopup(true)}  className="share-button" >ajouter un profile</button>
-     
+      {showPopup1 && (
+             <div className="popup">
+              <div className="popup-inner">
+              <button className="popup-close" onClick={F2}>
+              X
+            </button>
+            <MapContainer/>
+              </div>
+          
+             </div>
+          
+            
+            )}
       {showPopup && (
         
         <div className="popup">
         <div className="popup-inner">
+        
           <form onSubmit={handleSubmit}>
           <button className="popup-close" onClick={F1}>
               X
@@ -152,12 +179,12 @@ function TestQr() {
               Tel :
               <input type="text" name="Tel" onChange={handleInputChange} />
             </label>
-            <label>
+            <label onClick={F3}>
               Adresse :
-              <input type="text" name="adresse" onChange={handleInputChange} />
-            </label>
-            
-            <button type="submit" className="generate-button">Générer le code QR</button>
+              </label>
+              <input type="text" name="adresse" onChange={handleInputChange}  />
+              
+            <button type="submit"  className="generate-button">Générer le code QR</button>
           </form>
           <div ref={qrRef}>
           {showQRCode && <QRCode value={JSON.stringify(formData)}  onClick={telecharher} className="qr-container"/>}
