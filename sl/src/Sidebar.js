@@ -12,12 +12,12 @@ function Sidebar(props) {
   return (
     <div className="sidebar">
       <h3>Menu</h3>
-      <nav>
+      <nav class="wrapper" tabindex="0">
         <ul>
-        <li onClick={() => handleChoiceSelect("option1")}>Option 1</li>
-        <li onClick={() => handleChoiceSelect("option2")}>Option 2</li>
-        <li onClick={() => handleChoiceSelect("option3")}>Option 3</li>
-        <li onClick={() => handleChoiceSelect("option4")}>Option 4</li>
+        <li   class="menu-item" onClick={() => handleChoiceSelect("option1")}>Option 1</li>
+        <li   class="menu-item" onClick={() => handleChoiceSelect("option2")}>Option 2</li>
+        <li   class="menu-item" onClick={() => handleChoiceSelect("option3")}>Option 3</li>
+        <li   class="menu-item" onClick={() => handleChoiceSelect("option4")}>Option 4</li>
         </ul>
       </nav>
     </div>

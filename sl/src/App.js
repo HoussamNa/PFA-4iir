@@ -8,6 +8,8 @@ import Sidebar from './Sidebar';
 import MainContent from './MainPage';
 import ScanQrCode from './QrReader';
 
+import MapContainer from './Map';
+import Link3DModal from './Modal';
 function App() {
   const [showInscription, setShowInscription] = useState(false);
   const [content, setContent] = useState('default');
@@ -25,25 +27,26 @@ function App() {
   return (
     <div className="app-container">
       <div className="landing-page-container">
-        {showInscription && (
-          <div className="popup-container">
-            <Inscription onConnect={handleClick} />
-          </div>
-        )}
-        {content === 'default' ? (
-          <div>
-            <Navbar />
-            <HomeVue onSignUpClick={toggleInscription} />
-            <About />
-            <ScanQrCode />
-          </div>
-        ) : (
-          <div>
-            <Sidebar onChoiceSelect={handleChoiceSelect} />
-            <MainContent currentChoice={currentChoice} />
-          </div>
-        )}
-      </div>
+      {showInscription && (
+        <div className="popup-container">
+          <Inscription  onConnect={handleClick} />
+        </div>
+      )}
+      {content === 'default' ? (
+        <div>
+        <Navbar />
+        <HomeVue onSignUpClick={toggleInscription} />
+        <About />
+        <ScanQrCode/>
+       
+        </div>
+      ) : (
+        <div>
+          <Sidebar  onChoiceSelect={handleChoiceSelect}/>
+          <MainContent  currentChoice={currentChoice}/>
+        </div>
+      )}
+   </div>    
     </div>
   );
 }

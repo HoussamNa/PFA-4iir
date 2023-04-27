@@ -16,6 +16,11 @@
   left: 0; /* Set left to 0 */
   right: 0; /* Set right to 0 */
   z-index: 100;
+<<<<<<< HEAD
+  background:  transparent;
+  backdrop-filter: blur(10px);
+=======
+>>>>>>> origin/main
 }
 
 .nav ul {
