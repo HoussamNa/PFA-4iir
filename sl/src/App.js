@@ -10,6 +10,14 @@ import ScanQrCode from './QrReader';
 
 import MapContainer from './Map';
 import Link3DModal from './Modal';
+
+ReactDOM.render(
+  <BrowserRouter basename="https://houssamna.github.io/PFA-4iir/">
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root')
+);
+
 function App() {
   const [showInscription, setShowInscription] = useState(false);
   const [content, setContent] = useState('default');
