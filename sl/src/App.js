@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Navbar from './Navber';
 import Inscription from './Inscrir';
@@ -11,12 +13,7 @@ import ScanQrCode from './QrReader';
 import MapContainer from './Map';
 import Link3DModal from './Modal';
 
-ReactDOM.render(
-  <BrowserRouter basename="https://houssamna.github.io/PFA-4iir/">
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
-);
+
 
 function App() {
   const [showInscription, setShowInscription] = useState(false);
@@ -60,3 +57,9 @@ function App() {
 }
 
 export default App;
+ReactDOM.render(
+  <BrowserRouter basename="https://houssamna.github.io/PFA-4iir/">
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root')
+);
