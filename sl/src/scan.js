@@ -1,4 +1,5 @@
 // Utiliser la bibliothèque jsQR pour lire les données du code QR
+/*
 const video = document.createElement('video');
 const canvasElement = document.getElementById('canvas');
 const canvas = canvasElement.getContext('2d');
@@ -42,3 +43,4 @@ function generateQrLink(qrData) {
 
 // Afficher le pop-up de la caméra pour scanner le code QR
 captureCamera();
+*/
