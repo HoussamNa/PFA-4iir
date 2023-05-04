@@ -7,6 +7,8 @@ function HomeVue(props) {
     props.onSignUpClick();
   };
 
+
+
   useEffect(() => {
     const animation = document.querySelector('.text-animation');
     animation.classList.add('start-animation');
