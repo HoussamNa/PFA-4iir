@@ -1,9 +1,12 @@
 {
+  "homepage": "https://houssamna.github.io/PFA-4iir",
   "name": "sl",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@emotion/styled": "^11.10.6",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -21,8 +24,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5",
-    "web-vitals": "^2.1.4",
-    "homepage": "https://houssamna.github.io/PFA-4iir/"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -51,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "react-scripts": "^5.0.1"
   }
 }
