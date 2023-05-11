@@ -8,10 +8,11 @@ import HomeVue from './LandingPage';
 import About from './about';
 import Sidebar from './Sidebar';
 import MainContent from './MainPage';
+import Main from './Main';
 import ScanQrCode from './QrReader';
-
 import MapContainer from './Map';
 import Link3DModal from './Modal';
+import SecondPage from './secondepage';
 /*function App() {
   const [showInscription, setShowInscription] = useState(false);
   const [content, setContent] = useState('default');
@@ -72,33 +73,32 @@ function App() {
   function handleChoiceSelect(choice) {
     setCurrentChoice(choice);
   }
+ 
+  
   return (
-    <BrowserRouter>
- <Switch>
+ 
     <div className="app-container">
       <div className="landing-page-container">
       {showInscription && (
         <div className="popup-container">
-          <Inscription  onConnect={handleClick} />
+          <Inscription  onConnect={handleClick}  />
         </div>
       )}
       {content === 'default' ? (
         <div>
-        <Navbar />
-        <HomeVue onSignUpClick={toggleInscription} />
-        <About />
-        <ScanQrCode/>
+          
+      <Main onSignUpClick1={toggleInscription}/>
+
         </div>
       ) : (
         <div>
-          <Sidebar  onChoiceSelect={handleChoiceSelect}/>
-          <MainContent  currentChoice={currentChoice}/>
+         
+   <SecondPage currentChoice={currentChoice} onChoiceSelect={handleChoiceSelect} />
         </div>
       )}
    </div>    
     </div>
-    </Switch>
-    </BrowserRouter>
+
   );
 }
 

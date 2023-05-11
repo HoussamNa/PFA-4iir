@@ -2,41 +2,54 @@ import React, { useState } from 'react';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { FaSpinner ,FaUbuntu,FaRegEyeSlash} from 'react-icons/fa';
 import './static/Inscrir.css'; // fichier CSS pour les transitions
-
 function Inscription(props) {
   const [isLogin, setIsLogin] = useState(true);
+  const [showPopup1, setshowPopup1] = useState(true);
 
   const handleSwitch = () => {
     setIsLogin(!isLogin);
   };
+  const handleSwitch1 = () => {
+    setshowPopup1(!showPopup1);
+  };
   const handleonConnect = () => {
     props.onConnect();
   };
+
   return (
-    <div className="popup-form">
-    <div className="auth-form">
-        
-      <SwitchTransition mode="out-in">
-        <CSSTransition
-          key={isLogin ? 'login' : 'signup'}
-          classNames="form"
-          timeout={500}
-        >
-          {isLogin ? (
-            <LoginForm onSwitch={handleSwitch}  onClick={handleonConnect}/>
-          ) : (
-            <SignupForm onSwitch={handleSwitch} />
-          )}
-        </CSSTransition>
-      </SwitchTransition>
-      </div>
+   <div>
+     {showPopup1 && (
+             
+             <div className="popup-form">
+             <div className="auth-form">
+                 
+             <SwitchTransition mode="out-in">
+           <CSSTransition
+             key={isLogin ? 'login' : 'signup'}
+             classNames="form"
+             timeout={500}
+           >
+            
+               {isLogin ? (
+                 <LoginForm onSwitch={handleSwitch} onClick={handleonConnect} f={handleSwitch1} />
+               ) : (
+                 <SignupForm onSwitch={handleSwitch} f={handleSwitch1} />
+               )}
+            
+           </CSSTransition>
+         </SwitchTransition>
+               </div>
+             </div>
+            
+            )}
+   
     </div>
   );
 }
 
 
 
-function LoginForm({ onSwitch ,onClick}) {
+function LoginForm({ onSwitch ,onClick,f}) {
     ///
      const [isLoggedIn, setIsLoggedIn] = useState(false);
     ////
@@ -61,11 +74,35 @@ function LoginForm({ onSwitch ,onClick}) {
     };
   
     ///////////
+    function login(e) {
+      e.preventDefault();
+      fetch('http://localhost:8080/comptes/liste')
+        .then(response => response.json())
+        .then(users => {
+          const user = users.find(u => u.email === nom);
+          if (!user) {
+            window.alert('User not found');
+          } else {
+            if (motDePasse === user.password) {
+              setIsLoggedIn(true);
+              onClick();
+            } else {
+              window.alert('Invalid password');
+            }
+          }
+        })
+        .catch(error => console.error(error));
+    }
+    
+  
   return (
     
     <div className="login-form">
       
       <form>
+      <button className="popup-close" onClick={f} >
+              X
+            </button>
       <div onClick={onSwitch}>
       <FaUbuntu className="spin" />
       <span>connxion...</span>
@@ -81,7 +118,7 @@ function LoginForm({ onSwitch ,onClick}) {
           <input id="password" type="password" value={motDePasse} onChange={(event) => setMotDePasse(event.target.value)} />
          
         </label>
-        <button onClick={handleLogin}  >Se connecter</button>
+        <button onClick={login}  >Se connecter</button>
         <label>
   <a class="Label1" href="#"  onClick={onSwitch}>Vous avez déja un compte ?</a>
 </label>
@@ -93,7 +130,7 @@ function LoginForm({ onSwitch ,onClick}) {
   );
 }
 
-function SignupForm({ onSwitch }) {
+function SignupForm({ onSwitch ,f}) {
     const [nom, setNom] = useState('');
    
     const [email, setEmail] = useState('');
@@ -150,6 +187,9 @@ function SignupForm({ onSwitch }) {
     <div className="signup-form">
    
       <form >
+        <button className="popup-close" onClick={f}>
+              X
+            </button>
       <div onClick={onSwitch}>
       <FaSpinner className="spin" />
       <span>Inscription...</span>

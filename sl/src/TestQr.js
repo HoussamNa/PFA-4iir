@@ -104,6 +104,17 @@ function TestQr() {
   const [showPopup, setShowPopup] = useState(false);
   const [showQRCode, setShowQRCode] = useState(false);
   const [showPopup1, setShowPopup1] = useState(false);
+
+  const [nom, setNom] = useState('');
+  const [prenom, setPrenom] = useState('');
+  const [age, setAge] = useState('');
+  const [email, setEmail] = useState('');
+  const [tel, setTel] = useState('');
+  const [date, setDate] = useState('');
+  const [adresse, setAdresse] = useState('');
+
+
+
   const qrRef = useRef(null);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -114,7 +125,7 @@ function TestQr() {
     event.preventDefault();
     setShowQRCode(true);
   };
-  const telecharher = (event) => {
+  const telecharger = (event) => {
     event.preventDefault();
     html2canvas(qrRef.current).then(function(canvas) {
       canvas.toBlob(function(blob) {
@@ -138,6 +149,33 @@ function TestQr() {
     setShowPopup(false);
     setShowPopup1(true);
   };
+
+
+  const handleClick=(e)=>{
+    if (e) {
+      e.preventDefault();
+    }
+      
+      var inf={age:age,ddn:date,email:email,nom:nom,prenom:prenom,tel:tel};
+    
+      fetch("http://localhost:8080/profils/ajouter",
+      {
+        method:"POST",
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body:JSON.stringify(inf)
+      }).then(()=>{
+        window.alert("New profile added");
+
+       
+      })
+
+    }
+   
+  
+ 
+  
+
+
   return (
     <div className="test-qr">
       <button onClick={() => setShowPopup(true)}  className="share-button" >ajouter un profile</button>
@@ -159,35 +197,45 @@ function TestQr() {
         <div className="popup">
         <div className="popup-inner">
         
-          <form onSubmit={handleSubmit}>
-          <button className="popup-close" onClick={F1}>
-              X
-            </button>
-            <label>
-              Nom :
-              <input type="text" name="nom" onChange={handleInputChange} />
-            </label>
-            <label>
-              Prenom :
-              <input type="text" name="Prenom" onChange={handleInputChange} />
-            </label>
-            <label>
-              email :
-              <input type="text" name="email" onChange={handleInputChange} />
-            </label>
-            <label>
-              Tel :
-              <input type="text" name="Tel" onChange={handleInputChange} />
-            </label>
-            <label onClick={F3}>
-              Adresse :
-              </label>
-              <input type="text" name="adresse" onChange={handleInputChange}  />
-              
-            <button type="submit"  className="generate-button">Générer le code QR</button>
-          </form>
+        <form onSubmit={handleSubmit}>
+  <button className="popup-close" onClick={F1}>
+    X
+  </button>
+  <label>
+    Nom :
+    <input type="text" name="nom" onChange={(event) => { handleInputChange(event); setNom(event.target.value);}} />
+  </label>
+  <label>
+    Prénom :
+    <input type="text" name="prenom" onChange={(event) => { handleInputChange(event); setPrenom(event.target.value);}} />
+  </label>
+  <label>
+    Email :
+    <input type="email" name="email" onChange={(event) => { handleInputChange(event); setEmail(event.target.value);}} />
+  </label>
+  <label>
+    Tel :
+    <input type="tel" name="tel" onChange={(event) => { handleInputChange(event); setTel(event.target.value);}}/>
+  </label>
+  <label>
+    Date de naissance :
+    <input type="date" name="dateNaissance" onChange={(event) => { handleInputChange(event); setDate(event.target.value);}}/>
+  </label>
+  <label>
+    Âge :
+    <input type="number" name="age" onChange={(event) => { handleInputChange(event); setAge(event.target.value);}} />
+  </label>
+  <label onClick={F3}>
+    Adresse :
+  </label>
+  <input type="text" name="adresse" onChange={(event) => { handleInputChange(event); setAdresse(event.target.value);}} />          
+  <button type="submit"  className="generate-button">
+    Générer le code QR
+  </button>
+</form>
+
           <div ref={qrRef}>
-          {showQRCode && <QRCode value={JSON.stringify(formData)}  onClick={telecharher} className="qr-container"/>}
+          {showQRCode && <QRCode value={JSON.stringify(formData)} onClick={(event) => {telecharger(event); handleClick(event);}} className="qr-container"/>}
           </div>
          
         </div>

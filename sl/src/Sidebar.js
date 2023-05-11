@@ -18,7 +18,6 @@ function Sidebar(props) {
         <li   class="menu-item" onClick={() => handleChoiceSelect("option2")}>Option 2</li>
         <li   class="menu-item" onClick={() => handleChoiceSelect("option3")}>Option 3</li>
         <li   class="menu-item" onClick={() => handleChoiceSelect("option4")}>Option 4</li>
-        <li   class="menu-item" onClick={() => handleChoiceSelect("option5")}>Option 4</li>
         </ul>
       </nav>
     </div>
