@@ -1,19 +1,19 @@
 import { useState } from 'react';
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Navbar from './Navber';
 import Inscription from './Inscrir';
 import HomeVue from './LandingPage';
 import About from './about';
 import Sidebar from './Sidebar';
 import MainContent from './MainPage';
-import Main from './Main';
 import ScanQrCode from './QrReader';
-import MapContainer from './Map';
-import Link3DModal from './Modal';
-import SecondPage from './secondepage';
-/*function App() {
+import Mobile from './mobileInfo';
+
+
+
+function App() {
   const [showInscription, setShowInscription] = useState(false);
   const [content, setContent] = useState('default');
   const [currentChoice, setCurrentChoice] = useState('option1');
@@ -40,7 +40,9 @@ import SecondPage from './secondepage';
         <Navbar />
         <HomeVue onSignUpClick={toggleInscription} />
         <About />
+        <Mobile />
         <ScanQrCode/>
+       
         </div>
       ) : (
         <div>
@@ -50,55 +52,6 @@ import SecondPage from './secondepage';
       )}
    </div>    
     </div>
-  );
-}
-
-export default App;*/
-
-function App() {
-  const [showInscription, setShowInscription] = useState(false);
-
-  const toggleInscription = () => {
-    setShowInscription(!showInscription);
-  };
-  const [content, setContent] = useState('default'); // le contenu initial est "default"
-  
-  const handleClick = () => {
-    setContent('nouveau contenu'); // changer le contenu en cliquant sur le bouton
-    setShowInscription(!showInscription);
-  }
-
-  const [currentChoice, setCurrentChoice] = useState("option1");
-
-  function handleChoiceSelect(choice) {
-    setCurrentChoice(choice);
-  }
- 
-  
-  return (
- 
-    <div className="app-container">
-      <div className="landing-page-container">
-      {showInscription && (
-        <div className="popup-container">
-          <Inscription  onConnect={handleClick}  />
-        </div>
-      )}
-      {content === 'default' ? (
-        <div>
-          
-      <Main onSignUpClick1={toggleInscription}/>
-
-        </div>
-      ) : (
-        <div>
-         
-   <SecondPage currentChoice={currentChoice} onChoiceSelect={handleChoiceSelect} />
-        </div>
-      )}
-   </div>    
-    </div>
-
   );
 }
 

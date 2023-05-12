@@ -16,13 +16,16 @@ function Navbar() {
         
         </li>
         <li>
-          <a href="#" className="nav-link" onClick={handleContentClick}>Accueil</a>
+          <a href="/HomeVue" className="nav-link" onClick={handleContentClick}>Accueil</a>
         </li>
         <li>
-          <a href="#" className="nav-link">À propos</a>
+          <a href="/About" className="nav-link">À propos</a>
         </li>
         <li>
-          <a href="#" className="nav-link">Contact</a>
+          <a href="/mobileInfo" className="nav-link">Mobile App</a>
+        </li>
+        <li>
+          <a href="/ScanQrCode" className="nav-link">Scanner</a>
         </li>
       </ul>
     </nav>

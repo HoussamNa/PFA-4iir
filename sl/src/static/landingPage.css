@@ -122,6 +122,7 @@
   .popup-form button[type="submit"]:hover {
     background-color: #fff;
     color: black;
+    margin-top: 60px;
   }
   .popup-content {
     padding: 40px;

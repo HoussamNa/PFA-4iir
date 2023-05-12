@@ -16,7 +16,12 @@ function About() {
       </div>
       <div className="content">
         <h3>Description</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem sed autem vero? Magnam, est laboriosam!</p>
+        <p>
+QuickLinker est une application web et mobile puissante qui vous permet de partager facilement vos informations de contact et votre 
+emplacement avec d'autres personnes. Générez un QR code unique contenant toutes vos informations et partagez-le avec d'autres personnes. 
+L'application est polyvalente et peut être utilisée dans divers contextes professionnels ou personnels.</p>
+<span> Téléchargez 
+l'application mobile QuickLinker ou accédez à l'application web dès maintenant pour partager vos informations rapidement et facilement.</span>
       </div>
       
     </section>

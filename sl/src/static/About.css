@@ -9,7 +9,7 @@
   .home .image {
     flex: 1 1 45rem;
     padding-left: 6rem;
-    padding-bottom: 10rem;
+    padding-bottom: 5rem;
   }
   
   .home .image img {
@@ -27,14 +27,22 @@
   .home .content h3 {
     font-size: 4.5rem;
     color: var(--black);
-    line-height: 1.8;
+    line-height: 1.5;
     text-shadow: var(--text-shadow);
+    padding-left: 4.5rem;
   }
   
   .home .content p {
     font-size: 1.7rem;
     color: var(--light-color);
     line-height: 1.8;
-    padding: 1rem 0;
+    padding: rem 0;
+    padding-right: 4.5rem;
   }
-  
+
+  .home .content span {
+    font-size: 1.7rem;
+    color: var(--light-color);
+    line-height: 1.8;
+    padding: 0rem 0;
+  }

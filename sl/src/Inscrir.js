@@ -105,11 +105,11 @@ function LoginForm({ onSwitch ,onClick,f}) {
             </button>
       <div onClick={onSwitch}>
       <FaUbuntu className="spin" />
-      <span>connxion...</span>
+      <span>   Connexion</span>
     </div>
-      <h2>Se connecter</h2>
+      <h2> Se connecter</h2>
         <label>
-          User Name:
+          Nom d'utilisateur :
           <input type="text" value={nom} onChange={(event) => setNom(event.target.value)} />
         </label>
         <label>
@@ -120,7 +120,7 @@ function LoginForm({ onSwitch ,onClick,f}) {
         </label>
         <button onClick={login}  >Se connecter</button>
         <label>
-  <a class="Label1" href="#"  onClick={onSwitch}>Vous avez déja un compte ?</a>
+  <a class="Label1" href="#"  onClick={onSwitch}>Vous n'avez pas de compte ?</a>
 </label>
         
   </form>
@@ -192,7 +192,7 @@ function SignupForm({ onSwitch ,f}) {
             </button>
       <div onClick={onSwitch}>
       <FaSpinner className="spin" />
-      <span>Inscription...</span>
+      <span>   Inscription</span>
     </div>
         <h3>S'inscrire</h3>
         <label>

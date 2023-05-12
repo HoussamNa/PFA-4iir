@@ -1,102 +1,116 @@
 .test-qr {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .share-button {
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
-  
-  .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.share-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.popup-inner {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  max-width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.address-type-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  outline: none;
+}
+
+.address-type-button.active {
+  background-color: #3e8e41;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.popup-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.popup-list li {
+  margin: 10px 0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.popup-list li label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.popup-list li input[type='radio'] {
+  margin-right: 10px;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
   .popup-inner {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    position: relative;
-    max-width: 80%;
-    max-height: 80%;
-    overflow-y: auto;
-    text-align: center;
+    max-width: 90%;
+    max-height: 90%;
   }
-  
-  .popup-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .popup-inner {
+    max-width: 100%;
+    max-height: 100%;
   }
-  
-  .address-type-button {
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    outline: none;
-  }
-  
-  .address-type-button.active {
-    background-color: #3e8e41;
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .popup-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .popup-list li {
-    margin: 10px 0;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .popup-list li label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .popup-list li input[type='radio'] {
-    margin-right: 10px;
-  }
-  
+}
