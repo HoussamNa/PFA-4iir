@@ -1,0 +1,22 @@
+.infomob-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: scroll;
+  padding: 10px;
+  margin: 0 -10px;
+  scroll-snap-type: x mandatory;
+  box-shadow: 0 0 10px #1FAB89;
+}
+
+.infomob-slider img {
+  flex: 0 0 auto;
+  width: 40%;
+  margin-right: 0;
+  scroll-snap-align: start;
+  min-width: 150px;
+}
+
+.infomob-slider::-webkit-scrollbar {
+  display: none;
+}
